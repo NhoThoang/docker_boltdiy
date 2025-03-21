@@ -1,0 +1,17 @@
+services:
+  bolt:
+    image: ghcr.io/stackblitz-labs/bolt.diy:latest
+    container_name: bolt-diy
+    ports:
+      - "7500:5173"
+    volumes:
+      - ./bolt_data:/app/data
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - bolt_diy_network
+
+networks:
+  bolt_diy_network:
+    driver: bridge
